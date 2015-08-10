@@ -23,11 +23,12 @@ angular.module('paperwallet', ['monospaced.qrcode'])
     };
     $scope.seed();
 
+    $scope.accounts = new Accounts();
     $scope.generateWallet = function () {
-      var accounts = new Accounts();
-        var account = accounts.new();
-        $scope.address = account.address;
-        $scope.private = account.private;
+      var account = $scope.accounts.new();
+      $scope.address = account.address;
+      $scope.private = account.private;
+      $scope.accounts.clear();
     };
     $scope.base58 = function (hex) {
       if (!hex) return;
