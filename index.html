@@ -1,13 +1,8 @@
 <!doctype html>
 <html ng-app="paperwallet">
     <head>
-        <script src="lib/base58.js"></script>
-        <script src="lib/seedrandom.min.js"></script>
-        <script src="lib/ethereumjs-accounts.min.js"></script>
-        <script src="lib/qrcode.js"></script>
-        <script src="lib/angular.min.js"></script>
-        <script src="lib/angular-qrcode.js"></script>
-        <script src="app.js"></script>
+        <script src="build/all.js"></script>
+        <script src="build/all.css"></script>
     </head>
     <body ng-controller="PaperWallet">
         <div ng-hide="seeded">
@@ -15,7 +10,7 @@
             <p><progress value="{{movesGiven}}" max="{{movesNeeded}}"></progress></p>
         </div>
         <div ng-show="seeded">
-            <div id="paperWallet">
+            <div id="singleWallet">
                 <div id="address">
                     <qrcode size="150" data="{{address}}"></qrcode>
                     <p>SHARE</p>

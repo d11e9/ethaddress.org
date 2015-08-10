@@ -1,0 +1,30 @@
+{
+  "name": "ethaddress.org",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ryepdx/ethaddress.org",
+  "authors": [
+    "Ryan Casey <ryepdx@gmail.com>"
+  ],
+  "description": "A paper wallet utility for Ethereum.",
+  "main": "src/app.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "ethereum",
+    "paper",
+    "wallet"
+  ],
+  "license": "AGPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-materialize": "*",
+    "angular-qrcode": "*"
+  }
+}
