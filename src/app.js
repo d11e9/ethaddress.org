@@ -5,12 +5,8 @@ EthPW.app = angular
 EthPW.app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/404');
     $stateProvider
-        .state('seeding', {
-            url: '/', templateUrl: 'partials/seeding.html',
-            controller: EthPW.controllers.seeding 
-        })
         .state('singleWallet', {
-            url: '/singleWallet', templateUrl: 'partials/singleWallet.html',
+            url: '/', templateUrl: 'partials/singleWallet.html',
             controller: EthPW.controllers.singleWallet
         })
         .state('bulkWallets', {
