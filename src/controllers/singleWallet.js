@@ -20,5 +20,8 @@ EthPW.controllers.singleWallet = function ($scope) {
       if (!str) return;
       return str.replace(/./g, '*');
     };
+    $scope.exportKey = function () {
+      saveAs(new Blob([$scope.private], {type: "text/plain;charset=utf-8"}), "wallet.key");
+    };
     $scope.generateWallet();
 };
