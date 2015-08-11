@@ -1,45 +1,21 @@
-angular.module('paperwallet', ['monospaced.qrcode'])
-  .controller('PaperWallet', function ($scope) {
-    $scope.seeded = false;
-    $scope.movesNeeded = 1000;
-    $scope.movesGiven = 0;
-    $scope.seed = function () {
-      var t = [];
-      var event = 'mousemove';
-      function w(e) {
-        $scope.$apply(function () {
-          $scope.movesGiven = t.length;
-          t.push([e.pageX, e.pageY, +new Date]);
-          if ($scope.movesGiven < $scope.movesNeeded) { return; }
-          document.removeEventListener(event, w);
-          Math.seedrandom(t, { entropy: true });
-          $scope.seeded = true;
-          $scope.generateWallet();
-        });
-      }
-      document.addEventListener(event, w);
-      $scope.seeded = false;
-      $scope.movesGiven = 0;
-    };
-    $scope.seed();
+EthPW.app = angular
+  .module('paperwallet', ['monospaced.qrcode', 'ui.router'])
+  .controller('Seeder', EthPW.controllers.seeding);
 
-    $scope.accounts = new Accounts();
-    $scope.generateWallet = function () {
-      var account = $scope.accounts.new();
-      $scope.address = account.address;
-      $scope.private = account.private;
-      $scope.accounts.clear();
-    };
-    $scope.base58 = function (hex) {
-      if (!hex) return;
-      var intArray = [];
-      for (var i=0; i < hex.length; i+=2) {
-        intArray.push(parseInt(hex[i]+hex[i+1], 16));
-      }
-      return Base58.encode(intArray);
-    };
-    $scope.obfuscate = function (str) {
-      if (!str) return;
-      return str.replace(/./g, '*');
-    };
-  });
+EthPW.app.config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/404');
+    $stateProvider
+        .state('seeding', {
+            url: '/', templateUrl: 'partials/seeding.html',
+            controller: EthPW.controllers.seeding 
+        })
+        .state('singleWallet', {
+            url: '/singleWallet', templateUrl: 'partials/singleWallet.html',
+            controller: EthPW.controllers.singleWallet
+        })
+        .state('bulkWallets', {
+            url: '/bulkWallets', templateUrl: 'partials/bulkWallets.html',
+            controller: EthPW.controllers.bulkWallets
+        })
+        .state('404', {url: '/404', templateUrl: 'partials/404.html'});
+});

@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "angular-materialize": "*",
-    "angular-qrcode": "*"
+    "angular-qrcode": "*",
+    "angular-ui-router": "*"
   }
 }
