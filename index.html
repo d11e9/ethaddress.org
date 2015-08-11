@@ -12,6 +12,7 @@
                 <li class="bold logo"><a id="logo-container" class="brand-logo" href="/">EthAddress</a></li>
                 <li><a ui-sref="singleWallet">Single Wallet</a></li>
                 <li><a ui-sref="bulkWallets">Bulk Wallets</a></li>
+                <li><a href="#" ng-click="seeder.seed()">Reseed</a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" id="nav-mobile-button"
                 class="button-collapse"><i class="small mdi-navigation-menu"></i></a>
@@ -23,6 +24,7 @@
             </div>
             <div class="col s12">
                 <p class="flow-text"><progress class="seeding" value="{{movesGiven}}" max="{{movesNeeded}}"></progress></p>
+                <p class="flow-text">{{movesGiven}} out of <input type="number" class="inline" ng-model="movesNeeded"/><br>pieces of entropy collected...</p>
             </div>
         </div>
         <main>
