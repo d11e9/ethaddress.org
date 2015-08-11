@@ -1,31 +1,33 @@
 <div class="col s9">
   <div id="singleWallet">
-      <div class="row">
-          <div id="address" class="col m4 s12">
+      <div class="row paperwallet">
+          <div class="address col m4 s12">
               <qrcode size="150" data="{{address}}"></qrcode>
               <p>Address (SHARE)</p>
           </div>
-          <div id="privateKey" class="col m4 s12">
+          <div class="privateKey col m4 s12">
               <qrcode size="150" data="{{base58(private)}}"></qrcode>
               <p>Private Key (HIDE)</p>
           </div>
       </div>
   </div>
-  <p>Address: {{address}}</p>
-  <p>Private Key: <span ng-hide="showPrivate" ng-mouseover="showPrivate=true">{{obfuscate(private)}}</span>
-              <span ng-show="showPrivate" ng-mouseout="showPrivate=false">{{private}}</span>
-  </p>
-  <p>Private Key (Base58): <span ng-hide="showBase58Private" ng-mouseover="showBase58Private=true">{{obfuscate(base58(private))}}</span>
-              <span ng-show="showBase58Private" ng-mouseout="showBase58Private=false">{{base58(private)}}</span>
-  </p>
-  <p>
-  
-  </p>
-  <p>
-      <button class="btn-large green" ng-click="generateWallet()">Generate another wallet!</button>
-      <i class="small mdi-action-print btn-large blue"></i>
-      <i class="small mdi-file-file-download btn-large blue"></i>
-  </p>
-  <p><input type="checkbox" ng-model="usePassword" id="usePassword"><label for="usePassword">Generate encrypted wallets</label></p>
-  <p ng-show="usePassword"><label for="password">Password:</label><input type="password" ng-model="password" placeholder="Do not forget this!" /></p>
+  <div class="row screen-only">
+      <p>Address: {{address}}</p>
+      <p>Private Key: <span ng-hide="showPrivate" ng-mouseover="showPrivate=true">{{obfuscate(private)}}</span>
+                  <span ng-show="showPrivate" ng-mouseout="showPrivate=false">{{private}}</span>
+      </p>
+      <p>Private Key (Base58): <span ng-hide="showBase58Private" ng-mouseover="showBase58Private=true">{{obfuscate(base58(private))}}</span>
+                  <span ng-show="showBase58Private" ng-mouseout="showBase58Private=false">{{base58(private)}}</span>
+      </p>
+      <p>
+      
+      </p>
+      <p>
+          <button class="btn-large green" ng-click="generateWallet()">Generate another wallet!</button>
+          <i class="small mdi-action-print btn-large blue" ng-click="print()"></i>
+          <i class="small mdi-file-file-download btn-large blue" ng-click="exportKey()"></i>
+      </p>
+      <p><input type="checkbox" ng-model="usePassword" id="usePassword"><label for="usePassword">Generate encrypted wallets</label></p>
+      <p ng-show="usePassword"><label for="password">Password:</label><input type="password" ng-model="password" placeholder="Do not forget this!" /></p>
+  </div>
 </div>

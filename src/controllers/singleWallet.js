@@ -7,6 +7,7 @@ EthPW.controllers.singleWallet = function ($scope) {
       $scope.encrypted = account.encrypted;
       $scope.accounts.clear();
     };
+    $scope.print = function () {window.print();};
     $scope.base58 = function (hex) {
       if (!hex) return;
       var intArray = [];
@@ -18,6 +19,9 @@ EthPW.controllers.singleWallet = function ($scope) {
     $scope.obfuscate = function (str) {
       if (!str) return;
       return str.replace(/./g, '*');
+    };
+    $scope.exportKey = function () {
+      saveAs(new Blob([$scope.private], {type: "text/plain;charset=utf-8"}), "wallet.key");
     };
     $scope.generateWallet();
 };
