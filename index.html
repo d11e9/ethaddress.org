@@ -4,9 +4,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="build/all.js"></script>
         <link type="text/css" rel="stylesheet" href="build/all.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="print.css" media="print"/>
     </head>
     <body ng-controller="Seeder as seeder">
-        <header ng-show="seeder.seeded">
+        <header class="screen-only" ng-show="seeder.seeded">
             <ul id="nav-mobile" class="side-nav fixed">
                 <li class="bold logo"><a id="logo-container" class="brand-logo" href="/">EthAddress</a></li>
                 <li><a ui-sref="singleWallet">Single Wallet</a></li>

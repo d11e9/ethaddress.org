@@ -7,6 +7,7 @@ EthPW.controllers.singleWallet = function ($scope) {
       $scope.encrypted = account.encrypted;
       $scope.accounts.clear();
     };
+    $scope.print = function () {window.print();};
     $scope.base58 = function (hex) {
       if (!hex) return;
       var intArray = [];

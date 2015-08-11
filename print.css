@@ -1,0 +1,5 @@
+.screen-only { display: none !important; }
+.paperwallet { display: block !important; float: left; width: 100%; }
+.paperwallet .address { float: left; width: 50%; }
+.paperwallet .private { float: right; width: 50%; }
+
