@@ -1,16 +1,20 @@
 EthPW.controllers.bulkWallets = function ($scope) {
     var that = this;
     $scope.wallets = [];
-    $scope.accounts = new Accounts();
+    $scope.walletArt = "none";
+    that.accounts = new Accounts();
     that.generateWallet = function () {
-      var account = $scope.usePassword ? $scope.accounts.new($scope.password) : $scope.accounts.new();
-      $scope.address = account.address;
-      $scope.private = account.private;
-      $scope.encrypted = account.encrypted;
-      $scope.accounts.clear();
+      return $scope.usePassword ? that.accounts.new($scope.password) : that.accounts.new();
     };
+    $scope.print = function () {window.print();};
 
     $scope.generateWallets = function () {
+        $scope.wallets = [];
+        for (var i=0; i < parseInt($scope.numWallets); i+=1) {
+            $scope.wallets.push(that.generateWallet());
+            console.log(i);
+        }
+        that.accounts.clear();
     };
 
     $scope.base58 = function (hex) {
@@ -21,9 +25,12 @@ EthPW.controllers.bulkWallets = function ($scope) {
       }
       return Base58.encode(intArray);
     };
-    $scope.obfuscate = function (str) {
-      if (!str) return;
-      return str.replace(/./g, '*');
+    $scope.exportKeys = function () {
+      var zip = new JSZip();
+      for (var i=0; i < $scope.wallets.length; i+=1) {
+        zip.file($scope.wallets[i].address + ".key", $scope.wallets[i].private);
+      }
+      saveAs(zip.generate({type:"blob"}), "wallets.zip");
     };
     $scope.generateWallets();
 };

@@ -2,4 +2,4 @@
 .paperwallet { display: block !important; float: left; width: 100%; }
 .paperwallet .address { float: left; width: 50%; }
 .paperwallet .private { float: right; width: 50%; }
-
+.page-break { display: block; page-break-before: always; }
