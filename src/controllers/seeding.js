@@ -1,7 +1,7 @@
 EthPW.controllers.seeding = function ($scope, $state) {
     var that = this;
     that.seeded = false;
-    $scope.movesNeeded = 1000;
+    $scope.movesNeeded = 2048;
     $scope.movesGiven = 0;
     that.seed = function () {
       var entropy = [];
