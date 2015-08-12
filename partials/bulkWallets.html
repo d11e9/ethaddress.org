@@ -28,7 +28,8 @@
               <p>Address (SHARE)</p>
           </div>
           <div class="privateKey col m4 s12">
-              <qrcode version="6" size="150" data="{{base58(wallet.private)}}"></qrcode>
+              <qrcode size="150" version="8" data="{{private}}" ng-if="encrypted"></qrcode>
+              <qrcode size="150" version="8" data="{{base58(private)}}" ng-if="!encrypted"></qrcode>
               <p>Private Key (HIDE)</p>
           </div>
           <div class="page-break" ng-if="perPage && (!$first || perPage === 1) && ($index+1) % perPage === 0" />
