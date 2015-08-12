@@ -17,7 +17,7 @@ EthPW.controllers.bulkWallets = function ($scope) {
     };
 
     $scope.base58 = function (hex) {
-      if (!hex || (Number.isNaN(parseInt(hex), 16))) return;
+      if (!hex || Number.isNaN(parseInt(hex, 16))) return;
       var intArray = [];
       for (var i=0; i < hex.length; i+=2) {
         intArray.push(parseInt(hex[i]+hex[i+1], 16));
