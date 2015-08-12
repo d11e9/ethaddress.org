@@ -21,6 +21,10 @@
             <div class="col s12">
                 <p class="flow-text">Please move your mouse around to feed the random number generator!</p>
                 <p class="flow-text">(Tap and drag if you have a touchscreen.)</p>
+                <p class="flow-text">
+                    <input type="checkbox" ng-model="useAccelerometer" id="useAccelerometer" />
+                    <label for="useAccelerometer">Use accelerometer to harvest entropy</label>
+                </p>
             </div>
             <div class="col s12">
                 <p class="flow-text"><progress class="seeding" value="{{movesGiven}}" max="{{movesNeeded}}"></progress></p>
