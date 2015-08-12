@@ -19,6 +19,7 @@ EthPW.controllers.seeding = function ($scope, $state) {
           });
         }
         window.addEventListener(eventName, w);
+        return w;
       };
 
       setEntropySource('mousemove', function (e) {
@@ -40,10 +41,17 @@ EthPW.controllers.seeding = function ($scope, $state) {
         return [touch.pageX, touch.pageY, +new Date()];
       });
 
-      setEntropySource('devicemotion', function (e) {
-        console.log("moved");
-        var acc = e.accelerationIncludingGravity ? e.accelerationIncludingGravity : e.acceleration;
-        return [acc.x, acc.x, acc.z, +new Date()];
+      that.accelerometerWatcher = null;
+      $scope.watch(function (scope) { return scope.useAccelerometer; }, function (newVal, oldVal) {
+        if (accelerometerWatcher && !newVal) {
+          window.removeEventListener('devicemotion', that.accelerometerWatcher);
+        }
+        if (!newVal) return;
+
+        that.accelerometerWatcher = setEntropySource('devicemotion', function (e) {
+          var acc = e.accelerationIncludingGravity ? e.accelerationIncludingGravity : e.acceleration;
+          return [acc.x, acc.x, acc.z, +new Date()];
+        });
       });
 
       that.seeded = false;
