@@ -6,7 +6,8 @@
               <p>Address (SHARE)</p>
           </div>
           <div class="privateKey col m4 s12">
-              <qrcode size="150" data="{{base58(private)}}"></qrcode>
+              <qrcode size="150" version="8" data="{{private}}" ng-if="encrypted"></qrcode>
+              <qrcode size="150" version="8" data="{{base58(private)}}" ng-if="!encrypted"></qrcode>
               <p>Private Key (HIDE)</p>
           </div>
       </div>
@@ -16,7 +17,7 @@
       <p>Private Key: <span ng-hide="showPrivate" ng-mouseover="showPrivate=true">{{obfuscate(private)}}</span>
                   <span ng-show="showPrivate" ng-mouseout="showPrivate=false">{{private}}</span>
       </p>
-      <p>Private Key (Base58): <span ng-hide="showBase58Private" ng-mouseover="showBase58Private=true">{{obfuscate(base58(private))}}</span>
+      <p ng-hide="encrypted">Private Key (Base58): <span ng-hide="showBase58Private" ng-mouseover="showBase58Private=true">{{obfuscate(base58(private))}}</span>
                   <span ng-show="showBase58Private" ng-mouseout="showBase58Private=false">{{base58(private)}}</span>
       </p>
       <p>
