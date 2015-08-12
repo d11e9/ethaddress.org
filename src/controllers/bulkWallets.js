@@ -12,7 +12,6 @@ EthPW.controllers.bulkWallets = function ($scope) {
         $scope.wallets = [];
         for (var i=0; i < parseInt($scope.numWallets); i+=1) {
             $scope.wallets.push(that.generateWallet());
-            console.log(i);
         }
         that.accounts.clear();
     };
