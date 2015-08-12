@@ -43,7 +43,7 @@ EthPW.controllers.seeding = function ($scope, $state) {
 
       that.accelerometerWatcher = null;
       $scope.$watch(function (scope) { return scope.useAccelerometer; }, function (newVal, oldVal) {
-        if (accelerometerWatcher && !newVal) {
+        if (that.accelerometerWatcher && !newVal) {
           window.removeEventListener('devicemotion', that.accelerometerWatcher);
         }
         if (!newVal) return;
